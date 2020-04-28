@@ -16,20 +16,20 @@ class Palette extends Component {
     changeFormat(value) {
        this.setState({format:value})
     }
-    
+
     render() {
-        const {colors} = this.props.palette;
+        const {colors, paletteName, emoji } = this.props.palette;
         const {level,format } = this.state;
-        const colorBoxes = colors[level].map(c => <ColorBox background={c[format]} name={c.name}></ColorBox>)
+        const colorBoxes = colors[level].map(c => <ColorBox background={c[format]} name={c.name} key={c.id}></ColorBox>)
 
         return (
             <div className="Palette">
             <NavBar level={level} changeLevel={this.changeLevel} handleChange={this.changeFormat}></NavBar>
-                <div div className = "Palette-colors" >
-                    {colorBoxes}
-               {/* A bunch of colors */}
-                </div>
-                {/* Footer */}
+                <div div className = "Palette-colors" >{colorBoxes}</div>
+            <footer className="Palette-footer">{paletteName}
+            <span className="Palette-emoji">{emoji}</span>
+
+            </footer>
             </div>
         );
     }
