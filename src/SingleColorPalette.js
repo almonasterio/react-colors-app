@@ -19,15 +19,14 @@ export default class SingleColorPalette extends Component {
         let shades=[];
         let allColors=palette.colors;
         for(let key in allColors){
-            shades=shades.concat(allColors[key].filter(color =>color.id===colorToFilterBy ))
-        }
+            shades=shades.concat(allColors[key].filter(color =>color.id===colorToFilterBy ))         }
         return shades.slice(1)
     }
     render() {
         const {format} = this.state;
         const {paletteName, emoji, id} = this.props.palette
         const colorBoxes=this._shades.map(color=> (
-            <ColorBox key={color.name} name={color.name} background={color[format]}/>
+            <ColorBox showingFullPalette={false} key={color.name} name={color.name} background={color[format]}/>
         ))
         console.log(this.props.palette)
         return (
