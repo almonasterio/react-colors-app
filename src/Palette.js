@@ -29,7 +29,7 @@ class Palette extends Component {
         ></ColorBox>)
 
         return (
-            <div className="Palette">
+            <div className = "Palette" >
             <NavBar level={level} changeLevel={this.changeLevel} handleChange={this.changeFormat} showingAllColors={true}></NavBar>
                 <div div className = "Palette-colors" >{colorBoxes}</div>
                 <PaletteFooter paletteName={paletteName} emoji={emoji}/>
