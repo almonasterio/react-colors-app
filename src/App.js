@@ -17,7 +17,7 @@ findPalette(id){
   render() {
     return (
       <Switch>
-        <Route exact path='/' render={()=> <PaletteList palette={seedColors}></PaletteList>}/>
+        <Route exact path='/' render={(routeProps)=> <PaletteList palette={seedColors}{...routeProps}></PaletteList>}/>
         <Route 
         exact 
         path='/palette/:id' 
