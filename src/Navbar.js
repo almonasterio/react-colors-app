@@ -39,7 +39,7 @@ closeSnackbar(){
              <Link to={`/`}>reactcolorpicker</Link>        
             </div>  
             
-            <div className="slider-container">
+           {this.props.showingAllColors && (<div className="slider-container">
             <span>Level: {level}</span>
                 <div className = "slider" >
                     <Slider 
@@ -50,14 +50,14 @@ closeSnackbar(){
                     step={100}
                 />
                 </div>
-            </div>
-            <div className="select-container">
-            <Select value={format} onChange={this.handleChange}>
-            <MenuItem value="hex">HEX - #ffffff</MenuItem>
-            <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
-            <MenuItem value="rgba">RGBA - rgb(255,255,255,1)</MenuItem>
-            </Select>
-            </div>
+            </div>)}
+                <div className="select-container">
+                <Select value={format} onChange={this.handleChange}>
+                <MenuItem value="hex">HEX - #ffffff</MenuItem>
+                <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
+                <MenuItem value="rgba">RGBA - rgb(255,255,255,1)</MenuItem>
+                </Select>
+                </div>
             <Snackbar anchorOrigin={{vertical: "bottom", horizontal:"left" }} 
             open={this.state.open}
             autoHideDuration={3000}
