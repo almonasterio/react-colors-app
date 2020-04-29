@@ -15,7 +15,6 @@ findPalette(id){
 }
 
   render() {
-    console.log(generatePalette(seedColors[4]))
     return (
       <Switch>
         <Route exact path='/' render={()=> <PaletteList palette={seedColors}></PaletteList>}/>
@@ -25,9 +24,7 @@ findPalette(id){
         render={(routeProps)=><Palette palette={generatePalette(this.findPalette(routeProps.match.params.id))}/>
        }/>
       </Switch>
-      /* <div>
-         <Palette palette={generatePalette(seedColors[4])}/>
-      </div> */
+
     )
   }
 }

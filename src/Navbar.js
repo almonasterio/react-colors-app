@@ -25,7 +25,6 @@ handleChange(e){
 
 }
 closeSnackbar(){
-    console.log("entra")
  this.setState({
      open:false
  })
