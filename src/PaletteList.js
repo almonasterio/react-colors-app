@@ -37,9 +37,7 @@ const styles={
 }
 class PaletteList extends Component {
     goToPalette(id){
-        console.log("hola");
         this.props.history.push(`/palette/${id}`)
-
     }
     render() {
         const {palette,classes} = this.props
