@@ -91,8 +91,14 @@ class NewPaletteForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    ValidatorForm.addValidationRule("isColorNameUnique", value => this.state.colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase()));
-    ValidatorForm.addValidationRule("isColorUnique", value => this.state.colors.every(({ color }) => color !== this.state.currentColor));
+    ValidatorForm.addValidationRule("isColorNameUnique", value =>
+      this.state.colors.every(
+        ({ name }) => name.toLowerCase() !== value.toLowerCase()
+      )
+    );
+    ValidatorForm.addValidationRule("isColorUnique", value =>
+      this.state.colors.every(({ color }) => color !== this.state.currentColor)
+    );
     ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
       this.props.palettes.every(
         ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
@@ -126,7 +132,6 @@ class NewPaletteForm extends Component {
     this.setState({
       [evt.target.name]: evt.target.value
     });
-    
   }
   handleSubmit() {
     let newName = this.state.newPaletteName;
@@ -137,6 +142,11 @@ class NewPaletteForm extends Component {
     };
     this.props.savePalette(newPalette);
     this.props.history.push("/");
+  }
+  removeColor(colorName) {
+    this.setState({
+      colors: this.state.colors.filter(color => color.name !== colorName)
+    });
   }
 
   render() {
@@ -237,7 +247,12 @@ class NewPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
           {this.state.colors.map(color => (
-            <DraggableColorBox color={color.color} name={color.name} />
+            <DraggableColorBox
+              key={color.name}
+              color={color.color}
+              name={color.name}
+              handleClick={() => this.removeColor(color.name)}
+            />
           ))}
         </main>
       </div>
