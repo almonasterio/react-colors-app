@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MiniPalette from "./MiniPalette";
 import Dialog from "@material-ui/core/Dialog";
 import List from "@material-ui/core/List";
@@ -11,10 +12,9 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { withStyles } from "@material-ui/styles";
-import styles from "./styles/PaletteListStyles";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import styles from "./styles/PaletteListStyles";
 
 class PaletteList extends Component {
   constructor(props) {
@@ -42,8 +42,8 @@ class PaletteList extends Component {
     this.closeDialog();
   }
   render() {
-    const { palettes, classes, deletePalette } = this.props;
-    const { openDeleteDialog, deletingId } = this.state;
+    const { palettes, classes } = this.props;
+    const { openDeleteDialog} = this.state;
     return (
       <div className={classes.root}>
         <div className={classes.container}>
@@ -56,8 +56,7 @@ class PaletteList extends Component {
               <CSSTransition key={palette.id} classNames='fade' timeout={500}>
                 <MiniPalette
                   {...palette}
-                  handleClick={this.goToPalette}
-                  // handleDelete={deletePalette}
+                  goToPalette={this.goToPalette}
                   openDialog={this.openDialog}
                   key={palette.id}
                   id={palette.id}

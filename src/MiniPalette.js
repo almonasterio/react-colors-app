@@ -7,6 +7,7 @@ class MiniPalette extends PureComponent {
   constructor(props) {
     super(props);
     this.deletePalette = this.deletePalette.bind(this);
+    this.handleClick=this.handleClick.bind(this);
   }
   deletePalette(e) {
     e.stopPropagation();
